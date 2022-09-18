@@ -1,0 +1,59 @@
+{
+  "name": "electron-vitejs-react-boilerplate",
+  "private": true,
+  "version": "0.0.0",
+  "type": "commonjs",
+  "main": "build/electron.js",
+  "license": "ISC",
+  "author": {
+    "name": "Gihan Rangana",
+    "email": "itsmerangana@gmail.com"
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "electron": "tsc -p electron && concurrently -k \"yarn dev\" \"tsc -p electron -w\" \"electron .\"",
+    "electron:pack": "electron-builder --dir",
+    "electron:builder": "electron-builder",
+    "build:for:electron": "cross-env ELECTRON=true vite build",
+    "app:build": "yarn build:for:electron && yarn electron:builder"
+  },
+  "build": {
+    "appId": "com.my-website.my-app",
+    "productName": "MyApp",
+    "copyright": "Copyright © 2022 ${author}",
+    "mac": {
+      "category": "public.app-category.utilities"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "files": [
+      "dist/**/*",
+      "build/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets",
+      "output": "electron_build"
+    }
+  },
+  "dependencies": {
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.0.17",
+    "@types/react-dom": "^18.0.6",
+    "@vitejs/plugin-react": "^2.1.0",
+    "concurrently": "^7.4.0",
+    "cross-env": "^7.0.3",
+    "electron": "^20.1.4",
+    "electron-builder": "^23.3.3",
+    "electron-reload": "^2.0.0-alpha.1",
+    "typescript": "^4.6.4",
+    "vite": "^3.1.0",
+    "wait-on": "^6.0.1"
+  }
+}
