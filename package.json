@@ -13,11 +13,11 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "electron": "tsc -p electron && concurrently -k \"yarn dev\" \"tsc -p electron -w\" \"electron .\"",
+    "electron": "tsc -p electron && concurrently -k \"npm run dev\" \"tsc -p electron -w\" \"electron .\"",
     "electron:pack": "electron-builder --dir",
     "electron:builder": "electron-builder",
     "build:for:electron": "cross-env ELECTRON=true vite build",
-    "app:build": "yarn build:for:electron && yarn electron:builder"
+    "app:build": "npm run build:for:electron && npm run electron:builder"
   },
   "build": {
     "appId": "com.my-website.my-app",
